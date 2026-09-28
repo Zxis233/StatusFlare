@@ -1,0 +1,17 @@
+node_modules/
+dist/
+dist-worker/
+.wrangler/
+.local/
+coverage/
+tmp/
+*.tsbuildinfo
+*.log
+.DS_Store
+.dev.vars*
+!.dev.vars.example
+.env*
+!.env.example
+wrangler.deploy.toml
+wrangler.esing.toml
+*.pem

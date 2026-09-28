@@ -1,0 +1,20 @@
+StatusFlare
+
+This project was extracted and adapted from a full-stack Cloudflare derivative
+of UptimeFlare (https://github.com/lyc8503/UptimeFlare), originally created by
+lyc8503 and contributors and distributed under the Apache License, Version 2.0.
+The upstream license is preserved in LICENSE.
+
+The extracted application includes a React/Vite admin and status interface,
+Worker APIs, D1 configuration and incident storage, batch monitoring snapshots,
+and deployment/test tooling. StatusFlare changes include standalone packaging,
+branding, the STATUSFLARE_D1 binding, generic resource configuration, dependency
+cleanup, and independent deployment documentation/workflows.
+
+Original application directories and the upstream synchronization workflow
+are not part of this distribution. Historical D1 migration identifiers and
+legacy import compatibility are retained; these do not require UptimeFlare
+to be installed or running. StatusFlare is an independently maintained
+derivative and is not represented as an official UptimeFlare release.
+
+Third-party npm dependencies retain their respective licenses.

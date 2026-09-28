@@ -1,0 +1,50 @@
+# StatusFlare standalone deployment template. Contains no existing account or database IDs.
+name = "statusflare"
+main = "server/index.ts"
+compatibility_date = "2025-04-02"
+compatibility_flags = ["nodejs_compat"]
+workers_dev = true
+preview_urls = false
+
+# Optional custom domain; configure Cloudflare Access before publishing admin routes.
+# [[routes]]
+# pattern = "status.example.com"
+# custom_domain = true
+
+[assets]
+directory = "./dist"
+binding = "ASSETS"
+not_found_handling = "single-page-application"
+run_worker_first = ["/api/*", "/attachments/*", "/__scheduled"]
+
+[vars]
+# ACCESS_AUD = "your-access-application-audience"
+# ACCESS_TEAM_DOMAIN = "your-team.cloudflareaccess.com"
+# ADMIN_EMAILS = "you@example.com"
+ENVIRONMENT = "production"
+
+[[d1_databases]]
+binding = "STATUSFLARE_D1"
+database_name = "statusflare_db"
+# Inject the real UUID with scripts/configure-deploy.mjs, or use an ignored private config.
+database_id = "00000000-0000-0000-0000-000000000000"
+migrations_dir = "migrations"
+
+[triggers]
+crons = ["* * * * *"]
+
+[[durable_objects.bindings]]
+name = "REMOTE_CHECKER_DO"
+class_name = "RemoteChecker"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["RemoteChecker"]
+
+# Optional storage for attachments and history archives.
+# [[r2_buckets]]
+# binding = "STORAGE"
+# bucket_name = "statusflare-storage"
+
+[observability]
+enabled = true

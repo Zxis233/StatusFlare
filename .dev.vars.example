@@ -1,0 +1,8 @@
+ENVIRONMENT=development
+DEV_ADMIN_TOKEN=local-development-only
+# Generate your own: node -e "console.log(require('crypto').randomBytes(32).toString('base64'))"
+ENCRYPTION_KEY=AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=
+# Production uses Cloudflare Access; never set ENVIRONMENT=development remotely.
+# ACCESS_TEAM_DOMAIN=your-team.cloudflareaccess.com
+# ACCESS_AUD=your-access-application-audience
+# ADMIN_EMAILS=you@example.com
